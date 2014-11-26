@@ -31,7 +31,7 @@ order and right-handed coordinate system.So it won't work for Direct3D out of th
 Usage example:
 =================
 
-'''cpp
+```cpp
 
 //Init your GLFW window.
 
@@ -60,5 +60,5 @@ Usage example:
 	}
 
 
-'''
+```
 
