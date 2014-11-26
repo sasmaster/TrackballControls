@@ -12,8 +12,8 @@ Then I found THREE.js TrackballControls utility which was exactly what I needed.
 
 Known bugs,issues:
 =================
-It is possible that some bugs exists as I still haven't tested the utility extensively.But so far it seems to work ok.
-Also,I am sure that firther optimizations on Math instructions can be made,including SIMD integration.
+It is possible that some bugs exist as I still haven't tested the utility extensively.But so far it seems to work ok.
+Also,I am sure that further optimizations on Math instructions can be made,including SIMD integration.
 
 
 Dependencies:

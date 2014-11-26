@@ -153,5 +153,5 @@ namespace sasmaster{
 
 }
 
-#endif//IDM_TRACKBALL_CONTROLLS_H
+#endif//TRACKBALL_CONTROLLS_H
 
