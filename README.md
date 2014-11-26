@@ -28,6 +28,8 @@ GLM Math(http://glm.g-truc.net/0.9.5/index.html) is used for all math operations
 Important note for those who would like to use it with Direct3D,the lib uses column-major matrix 
 order and right-handed coordinate system.So it won't work for Direct3D out of the box.
 
+Tested with MSVC++ 110 (Visual Studio 2012) on Windows 7. The code uses C++ 11 features.
+
 Usage example:
 =================
 
