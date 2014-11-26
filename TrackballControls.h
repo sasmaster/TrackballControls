@@ -47,6 +47,18 @@ namespace sasmaster{
 		void Init(GLFWwindow *win);
 
 		void Update();
+		
+		void MouseUp();
+
+		void KeyUp();
+
+		void MouseDown(int button, int action, int mods,int xpos,int ypos);
+
+		void MouseMove(int xpos, int ypos);
+
+		void KeyDown(int key);
+
+		void MouseWheel(double xoffset ,double yoffset);
 
 
 		float m_rotateSpeed;
@@ -66,17 +78,7 @@ namespace sasmaster{
 		TrackballControls(Camera3D* cam,glm::vec4 screenSize);
 
 
-		void MouseUp();
-
-		void KeyUp();
-
-		void MouseDown(int button, int action, int mods,int xpos,int ypos);
-
-		void MouseMove(int xpos, int ypos);
-
-		void KeyDown(int key);
-
-		void MouseWheel(double xoffset ,double yoffset);
+	
 
 		glm::vec3 GetMouseProjectionOnBall(int clientX, int clientY);
 
@@ -114,16 +116,7 @@ namespace sasmaster{
 		TCB_STATE m_prevState;
 
 		static uint32_t m_keys[3];
-
-		static void MouseMoveCallBack(GLFWwindow* win, double xpos, double ypos) ;
-		static void MouseButtonCallBack(GLFWwindow* win ,int button,int action,int mods);
-		static void MouseScrollCallBack(GLFWwindow* win, double xpos, double ypos);
-		static void KeyboardCallBack(GLFWwindow* win,int key,int scancode,int action,int mods);
-
-
-
-
-
+ 
 	};
 
 	inline glm::vec2 TrackballControls::GetMouseOnScreen(int clientX, int clientY)

@@ -43,6 +43,39 @@ namespace sasmaster{
 
 
 	}
+	
+	//------------------------   Static callbacks -------------------------------------------------
+	static void MouseButtonCallBack(GLFWwindow* win ,int button,int action,int mods){
+		if(action == GLFW_PRESS){
+			double xpos,ypos;
+			glfwGetCursorPos(win,&xpos,&ypos);
+			s_instance->MouseDown(button,action,mods,(int)xpos,(int)ypos);
+		}
+		if(action == GLFW_RELEASE){
+			s_instance->MouseUp();
+		}
+
+	}
+	static void MouseMoveCallBack(GLFWwindow* win, double xpos, double ypos) {
+		s_instance->MouseMove((int)xpos,(int)ypos);
+	}
+
+	static void MouseScrollCallBack(GLFWwindow* win, double xpos, double ypos){
+
+		s_instance->MouseWheel(xpos,ypos);
+
+	}
+	static void KeyboardCallBack(GLFWwindow* win,int key,int scancode,int action,int mods){
+		if(action == GLFW_PRESS){
+			s_instance->KeyDown(key);
+		}
+
+		if(action == GLFW_RELEASE){
+			s_instance->KeyUp();
+		}
+
+	}
+	//-----------------------------------------------------------------------------------------------
 
 
 	TrackballControls::TrackballControls(Camera3D* cam,glm::vec4 screenSize)
@@ -71,54 +104,17 @@ namespace sasmaster{
 		m_panStart(0.0f),
 		m_panEnd(0.0f)
 	{
-
-
-
-
-
-
 	}
 
 	void TrackballControls::Init(GLFWwindow *win){
 
-		glfwSetCursorPosCallback(win,&TrackballControls::MouseMoveCallBack);
-		glfwSetMouseButtonCallback(win,&TrackballControls::MouseButtonCallBack);
-		glfwSetScrollCallback(win,&TrackballControls::MouseScrollCallBack);
-		glfwSetKeyCallback(win,&TrackballControls::KeyboardCallBack);
+		glfwSetCursorPosCallback(win,&MouseMoveCallBack);
+		glfwSetMouseButtonCallback(win,&MouseButtonCallBack);
+		glfwSetScrollCallback(win,&MouseScrollCallBack);
+		glfwSetKeyCallback(win,&KeyboardCallBack);
 	}
 
-	//------------------------   Static callbacks -------------------------------------------------
-	void TrackballControls::MouseButtonCallBack(GLFWwindow* win ,int button,int action,int mods){
-		if(action == GLFW_PRESS){
-			double xpos,ypos;
-			glfwGetCursorPos(win,&xpos,&ypos);
-			s_instance->MouseDown(button,action,mods,(int)xpos,(int)ypos);
-		}
-		if(action == GLFW_RELEASE){
-			s_instance->MouseUp();
-		}
 
-	}
-	void TrackballControls::MouseMoveCallBack(GLFWwindow* win, double xpos, double ypos) {
-		s_instance->MouseMove((int)xpos,(int)ypos);
-	}
-
-	void TrackballControls::MouseScrollCallBack(GLFWwindow* win, double xpos, double ypos){
-
-		s_instance->MouseWheel(xpos,ypos);
-
-	}
-	void TrackballControls::KeyboardCallBack(GLFWwindow* win,int key,int scancode,int action,int mods){
-		if(action == GLFW_PRESS){
-			s_instance->KeyDown(key);
-		}
-
-		if(action == GLFW_RELEASE){
-			s_instance->KeyUp();
-		}
-
-	}
-	//-----------------------------------------------------------------------------------------------
 
 	void TrackballControls::Update(){
 
