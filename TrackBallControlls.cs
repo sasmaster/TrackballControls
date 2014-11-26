@@ -318,9 +318,7 @@ namespace OpenGL_Tess
                 quaternion = Quaternion.FromAxisAngle(axis, -angle);
 
                 //quaternion.rotate(_eye);
-                _eye = Vector3.Transform(_eye, quaternion);
-                //        Debug.Assert(_eye.Z != float.NegativeInfinity && _eye.Z != float.PositiveInfinity);
-
+                _eye = Vector3.Transform(_eye, quaternion);            
 
                 //  quaternion.rotate(object.up);
                 _camObject.Up = Vector3.Transform(_camObject.Up, quaternion);
@@ -402,12 +400,10 @@ namespace OpenGL_Tess
                 pan += camUpClone;
 
                 //object.position.add( pan );
-                //  _camObject._pos.Add(pan);
                 _camObject._pos = Vector3.Add(_camObject.Pos, pan);
-                //     Debug.Assert(_camObject.Pos.Z != float.NegativeInfinity && _camObject.Pos.Z != float.PositiveInfinity);
+              
 
                 //  target.add( pan );
-                // _target.Add(pan);
                 _target = Vector3.Add(_target, pan);
                 if (_staticMoving)
                 {
@@ -469,8 +465,7 @@ namespace OpenGL_Tess
 
             //   _eye.setFrom( object.position ).sub( target );
             _eye = new Vector3(_camObject.Pos);
-            //   Debug.Assert(_eye.Z != float.NegativeInfinity && _eye.Z != float.PositiveInfinity);
-
+         
             _eye = Vector3.Subtract(_eye, _target);
             if (!_noRotate)
             {
@@ -559,15 +554,7 @@ namespace OpenGL_Tess
         {
             if (!_enabled) { return; }
 
- 
             float delta = 0.0f;
-
-            // TODO(nelsonsilva) - check this!
-            //if ( e.deltaY != 0 ) { // WebKit / Opera / Explorer 9
-
-            //  delta = event.deltaY / 40;
-
-            //} else 
 
             if (e.Delta != 0)
             { // Firefox
