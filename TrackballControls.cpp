@@ -86,6 +86,7 @@ namespace sasmaster{
 		m_zoomSpeed(1.2f),
 		m_panSpeed(0.3f),
 		m_noRotate(false),
+		m_noPan(false),
 		m_noZoom(false),
 		m_noRoll(false),
 		m_staticMoving(false),
@@ -171,9 +172,9 @@ namespace sasmaster{
 		{
 
 
-			glm::vec3 axis = glm::normalize(glm::cross( m_rotEnd,m_rotStart )); //_rotateStart.cross(_rotateEnd).normalize();
+			glm::vec3 axis = glm::normalize(glm::cross( m_rotStart, m_rotEnd )); //_rotateStart.cross(_rotateEnd).normalize();
 			//   axis.Normalize();
-			axis.y*=-1.0f;///need to invert y as rotate seems to be in opposite to mouse move direction.
+			//axis.y*=-1.0f;///need to invert y as rotate seems to be in opposite to mouse move direction.
 
 
 			glm::quat quaternion;// Quaternion quaternion = Quaternion.Identity;
@@ -500,7 +501,7 @@ namespace sasmaster{
 		if (yoffset != 0.0)
 		{ // Firefox
 
-			delta = -(float)yoffset / 3.0f;
+			delta = (float)yoffset / 3.0f;
 
 		}
 
