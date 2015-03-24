@@ -175,7 +175,8 @@ namespace sasmaster{
 			glm::vec3 axis = glm::normalize(glm::cross( m_rotStart, m_rotEnd )); //_rotateStart.cross(_rotateEnd).normalize();
 			//   axis.Normalize();
 			//axis.y*=-1.0f;///need to invert y as rotate seems to be in opposite to mouse move direction.
-
+			if(glm::isnan(axis.x) || glm::isnan(axis.y) || glm::isnan(axis.z))
+                		return;
 
 			glm::quat quaternion;// Quaternion quaternion = Quaternion.Identity;
 
